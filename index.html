@@ -211,16 +211,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -237,6 +227,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -365,8 +365,7 @@
 
       
         
-          
-            <h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>csvtotable是一个命令行工具，可以把csv文件转换为可以搜索和排序的Html表格。<br>项目GitHub地址：<a href="https://github.com/vividvilla/csvtotable" target="_blank" rel="noopener">https://github.com/vividvilla/csvtotable</a></p>
+          <h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>csvtotable是一个命令行工具，可以把csv文件转换为可以搜索和排序的Html表格。<br>项目GitHub地址：<a href="https://github.com/vividvilla/csvtotable" target="_blank" rel="noopener">https://github.com/vividvilla/csvtotable</a></p>
 <p>mac终端下一行命令快速安装：sudo pip install –upgrade csvtotable。</p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>通过mac终端执行下面这条命令安装。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> <span class="comment">--upgrade csvtotable</span></span><br></pre></td></tr></table></figure></p>
 <p><img src="/2017/12/20/一行命令实现csv文件可视化/A05A6319-9834-4356-83B7-97B66E5C3FD6.png" alt="logo"></p>
@@ -378,17 +377,13 @@
 <li>本地生成html文件，直接打开filename.html文件</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">csvtotable</span> <span class="selector-tag">filename</span><span class="selector-class">.csv</span> <span class="selector-tag">filename</span><span class="selector-class">.html</span></span><br></pre></td></tr></table></figure>
-<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>1.指定分隔符，默认分隔符是”,”。若不是”,”分隔符，使用-d参数指定分隔符。</p>
-<p>举个栗子：test.csv文件内容如下：<br><img src="/2017/12/20/一行命令实现csv文件可视化/B276D913-F92C-43AE-AE0A-AADAC79FA42A.png" alt="logo"></p>
-<p>可视化csv文件，执行命令：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csvtotable <span class="keyword">test</span> -<span class="keyword">d</span> <span class="string">";"</span> -<span class="built_in">s</span></span><br></pre></td></tr></table></figure></p>
-<p><img src="/2017/12/20/一行命令实现csv文件可视化/FBB4871F-6CFC-4BA2-B4F9-E9E629D7969E.png" alt="logo"></p>
-<p>2.设置文件标题，默认显示”Table”。使用-c参数指定文件标题。</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csvtotable <span class="keyword">test</span>.csv -<span class="keyword">d</span> “;" -c “my <span class="keyword">test</span>” -<span class="built_in">s</span></span><br></pre></td></tr></table></figure>
-<p>3.设置加载行数，默认加载所有行。使用-dl参数设置加载数据行数。</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csvtotable <span class="keyword">test</span>.csv -<span class="keyword">d</span> “;" -c “my <span class="keyword">test</span>” -dl 2 -<span class="built_in">s</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2017/12/20/一行命令实现csv文件可视化/0D47639A-7F3B-4CD3-92A5-FA91B400DE3E.png" alt="logo"></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/20/一行命令实现csv文件可视化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

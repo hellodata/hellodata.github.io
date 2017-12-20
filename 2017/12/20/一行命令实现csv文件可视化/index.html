@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://liuzhuang.me/2017/12/20/一行命令实现csv文件可视化/B276D913-F92C-43AE-AE0A-AADAC79FA42A.png">
 <meta property="og:image" content="http://liuzhuang.me/2017/12/20/一行命令实现csv文件可视化/FBB4871F-6CFC-4BA2-B4F9-E9E629D7969E.png">
 <meta property="og:image" content="http://liuzhuang.me/2017/12/20/一行命令实现csv文件可视化/0D47639A-7F3B-4CD3-92A5-FA91B400DE3E.png">
-<meta property="og:updated_time" content="2017-12-20T15:00:09.000Z">
+<meta property="og:updated_time" content="2017-12-20T15:15:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一行命令实现csv文件可视化">
 <meta name="twitter:description" content="介绍csvtotable是一个命令行工具，可以把csv文件转换为可以搜索和排序的Html表格。项目GitHub地址：https://github.com/vividvilla/csvtotable mac终端下一行命令快速安装：sudo pip install –upgrade csvtotable。 安装通过mac终端执行下面这条命令安装。1sudo pip install --upgrade">
@@ -216,16 +216,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -242,6 +232,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -379,6 +379,7 @@
 <li>本地生成html文件，直接打开filename.html文件</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">csvtotable</span> <span class="selector-tag">filename</span><span class="selector-class">.csv</span> <span class="selector-tag">filename</span><span class="selector-class">.html</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>1.指定分隔符，默认分隔符是”,”。若不是”,”分隔符，使用-d参数指定分隔符。</p>
 <p>举个栗子：test.csv文件内容如下：<br><img src="/2017/12/20/一行命令实现csv文件可视化/B276D913-F92C-43AE-AE0A-AADAC79FA42A.png" alt="logo"></p>
 <p>可视化csv文件，执行命令：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csvtotable <span class="keyword">test</span> -<span class="keyword">d</span> <span class="string">";"</span> -<span class="built_in">s</span></span><br></pre></td></tr></table></figure></p>
