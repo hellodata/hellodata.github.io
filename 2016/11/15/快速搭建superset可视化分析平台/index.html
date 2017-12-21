@@ -98,16 +98,16 @@
 <meta name="keywords" content="数据可视化,superset">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速搭建superset可视化分析平台">
-<meta property="og:url" content="http://liuzhuang.me/2017/12/20/快速搭建superset可视化分析平台/index.html">
+<meta property="og:url" content="http://liuzhuang.me/2016/11/15/快速搭建superset可视化分析平台/index.html">
 <meta property="og:site_name" content="向自由">
 <meta property="og:description" content="Superset 是 Airbnb （在线房屋短租公司）开源的数据探查与可视化平台（曾用名 Panoramix、Caravel ），该工具在可视化、易用性和交互性上非常有特色，用户可以轻松对数据进行可视化分析。  机器初始化如果没有安装Anaconda，可以按照后面的链接安装Anaconda，关键操作如下. 创建并激活第一个虚拟环境： 12conda create --name snowflak">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://liuzhuang.me/2017/12/20/快速搭建superset可视化分析平台/201712232922211.png">
-<meta property="og:updated_time" content="2017-12-20T15:43:37.000Z">
+<meta property="og:image" content="http://liuzhuang.me/2016/11/15/快速搭建superset可视化分析平台/201712232922211.png">
+<meta property="og:updated_time" content="2017-12-21T00:22:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速搭建superset可视化分析平台">
 <meta name="twitter:description" content="Superset 是 Airbnb （在线房屋短租公司）开源的数据探查与可视化平台（曾用名 Panoramix、Caravel ），该工具在可视化、易用性和交互性上非常有特色，用户可以轻松对数据进行可视化分析。  机器初始化如果没有安装Anaconda，可以按照后面的链接安装Anaconda，关键操作如下. 创建并激活第一个虚拟环境： 12conda create --name snowflak">
-<meta name="twitter:image" content="http://liuzhuang.me/2017/12/20/快速搭建superset可视化分析平台/201712232922211.png">
+<meta name="twitter:image" content="http://liuzhuang.me/2016/11/15/快速搭建superset可视化分析平台/201712232922211.png">
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://liuzhuang.me/2017/12/20/快速搭建superset可视化分析平台/"/>
+  <link rel="canonical" href="http://liuzhuang.me/2016/11/15/快速搭建superset可视化分析平台/"/>
 
 
 
@@ -275,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2017/12/20/快速搭建superset可视化分析平台/">
+    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2016/11/15/快速搭建superset可视化分析平台/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="向自由">
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T23:19:07+08:00">
-                2017-12-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-15T23:19:07+08:00">
+                2016-11-15
               </time>
             
 
@@ -396,7 +396,7 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">superset runserver [ -<span class="selector-tag">p</span> <span class="number">8088</span> ]</span><br></pre></td></tr></table></figure>
 <h3 id="汉化superset"><a href="#汉化superset" class="headerlink" title="汉化superset"></a>汉化superset</h3><p>进入Superset安装目录<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /root/anaconda2/envs/bunnies/<span class="class"><span class="keyword">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/</span></span><br></pre></td></tr></table></figure></p>
 <p>执行以下命令，创建相应目录<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p translations<span class="regexp">/zh/</span>LC_MESSAGES </span><br><span class="line">cd translations<span class="regexp">/zh/</span>LC_MESSAGES </span><br><span class="line">wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/airbnb/</span>superset<span class="regexp">/raw/</span><span class="number">0.15</span>.<span class="number">1</span><span class="regexp">/superset/</span>translations<span class="regexp">/zh/</span>LC_MESSAGES<span class="regexp">/messages.mo</span></span><br></pre></td></tr></table></figure></p>
-<p>修改配置文件 vim config.py：<br><img src="/2017/12/20/快速搭建superset可视化分析平台/201712232922211.png" alt="logo"></p>
+<p>修改配置文件 vim config.py：<br><img src="/2016/11/15/快速搭建superset可视化分析平台/201712232922211.png" alt="logo"></p>
 <p>几个路径:<br>配置文件：./lib/python3.6/site-packages/superset/config.py<br>汉化：./lib/python3.6/site-packages/superset/translations/*<br>导航部分隐藏：./lib/python3.6/site-packages/superset/templates/appbuilder/navbar.html<br>更换LOGO：./lib/python3.6/site-packages/superset/static/assets/images</p>
 <h3 id="后台启动"><a href="#后台启动" class="headerlink" title="后台启动"></a>后台启动</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup superset runserver &gt;output <span class="number">2</span>&gt;&amp;<span class="number">1</span> &amp;</span><br></pre></td></tr></table></figure>
 <h3 id="添加数据源"><a href="#添加数据源" class="headerlink" title="添加数据源"></a>添加数据源</h3><p>配置MySQL数据库并添加MySQL数据源 </p>
@@ -440,17 +440,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/20/一行命令实现csv文件可视化/" rel="next" title="一行命令实现csv文件可视化">
-                <i class="fa fa-chevron-left"></i> 一行命令实现csv文件可视化
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/20/给superset图表设置缓存/" rel="prev" title="给superset图表设置缓存">
+              <a href="/2016/11/16/给superset图表设置缓存/" rel="prev" title="给superset图表设置缓存">
                 给superset图表设置缓存 <i class="fa fa-chevron-right"></i>
               </a>
             

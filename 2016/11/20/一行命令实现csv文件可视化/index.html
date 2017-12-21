@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="缓存,superset,redis," />
+  <meta name="keywords" content="数据可视化,csvtotable," />
 
 
 
@@ -94,20 +94,23 @@
 
 
 
-<meta name="description" content="设置缓存方式一：使用simple方式（使用本地Python字典）缓存，修改配置文件12CACHE_DEFAULT_TIMEOUT = 60 * 60 * 6CACHE_CONFIG = &amp;#123;&apos;CACHE_TYPE&apos;: ‘simple’&amp;#125; 方式二：使用redis方式缓存，修改配置文件(强烈推荐这种方式) 1234567import redisCACHE_DEFAULT_TIMEOU">
-<meta name="keywords" content="缓存,superset,redis">
+<meta name="description" content="介绍csvtotable是一个命令行工具，可以把csv文件转换为可以搜索和排序的Html表格。项目GitHub地址：https://github.com/vividvilla/csvtotable mac终端下一行命令快速安装：sudo pip install –upgrade csvtotable。 安装通过mac终端执行下面这条命令安装。1sudo pip install --upgrade">
+<meta name="keywords" content="数据可视化,csvtotable">
 <meta property="og:type" content="article">
-<meta property="og:title" content="给superset图表设置缓存">
-<meta property="og:url" content="http://liuzhuang.me/2017/12/20/给superset图表设置缓存/index.html">
+<meta property="og:title" content="一行命令实现csv文件可视化">
+<meta property="og:url" content="http://liuzhuang.me/2016/11/20/一行命令实现csv文件可视化/index.html">
 <meta property="og:site_name" content="向自由">
-<meta property="og:description" content="设置缓存方式一：使用simple方式（使用本地Python字典）缓存，修改配置文件12CACHE_DEFAULT_TIMEOUT = 60 * 60 * 6CACHE_CONFIG = &amp;#123;&apos;CACHE_TYPE&apos;: ‘simple’&amp;#125; 方式二：使用redis方式缓存，修改配置文件(强烈推荐这种方式) 1234567import redisCACHE_DEFAULT_TIMEOU">
+<meta property="og:description" content="介绍csvtotable是一个命令行工具，可以把csv文件转换为可以搜索和排序的Html表格。项目GitHub地址：https://github.com/vividvilla/csvtotable mac终端下一行命令快速安装：sudo pip install –upgrade csvtotable。 安装通过mac终端执行下面这条命令安装。1sudo pip install --upgrade">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://liuzhuang.me/2017/12/20/给superset图表设置缓存/B5B1D342-DD3B-4952-97EF-58749A6A1DFC.png">
-<meta property="og:updated_time" content="2017-12-20T16:12:04.000Z">
+<meta property="og:image" content="http://liuzhuang.me/2016/11/20/一行命令实现csv文件可视化/A05A6319-9834-4356-83B7-97B66E5C3FD6.png">
+<meta property="og:image" content="http://liuzhuang.me/2016/11/20/一行命令实现csv文件可视化/B276D913-F92C-43AE-AE0A-AADAC79FA42A.png">
+<meta property="og:image" content="http://liuzhuang.me/2016/11/20/一行命令实现csv文件可视化/FBB4871F-6CFC-4BA2-B4F9-E9E629D7969E.png">
+<meta property="og:image" content="http://liuzhuang.me/2016/11/20/一行命令实现csv文件可视化/0D47639A-7F3B-4CD3-92A5-FA91B400DE3E.png">
+<meta property="og:updated_time" content="2017-12-21T00:22:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="给superset图表设置缓存">
-<meta name="twitter:description" content="设置缓存方式一：使用simple方式（使用本地Python字典）缓存，修改配置文件12CACHE_DEFAULT_TIMEOUT = 60 * 60 * 6CACHE_CONFIG = &amp;#123;&apos;CACHE_TYPE&apos;: ‘simple’&amp;#125; 方式二：使用redis方式缓存，修改配置文件(强烈推荐这种方式) 1234567import redisCACHE_DEFAULT_TIMEOU">
-<meta name="twitter:image" content="http://liuzhuang.me/2017/12/20/给superset图表设置缓存/B5B1D342-DD3B-4952-97EF-58749A6A1DFC.png">
+<meta name="twitter:title" content="一行命令实现csv文件可视化">
+<meta name="twitter:description" content="介绍csvtotable是一个命令行工具，可以把csv文件转换为可以搜索和排序的Html表格。项目GitHub地址：https://github.com/vividvilla/csvtotable mac终端下一行命令快速安装：sudo pip install –upgrade csvtotable。 安装通过mac终端执行下面这条命令安装。1sudo pip install --upgrade">
+<meta name="twitter:image" content="http://liuzhuang.me/2016/11/20/一行命令实现csv文件可视化/A05A6319-9834-4356-83B7-97B66E5C3FD6.png">
 
 
 
@@ -136,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://liuzhuang.me/2017/12/20/给superset图表设置缓存/"/>
+  <link rel="canonical" href="http://liuzhuang.me/2016/11/20/一行命令实现csv文件可视化/"/>
 
 
 
 
 
-  <title>给superset图表设置缓存 | 向自由</title>
+  <title>一行命令实现csv文件可视化 | 向自由</title>
   
 
 
@@ -275,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2017/12/20/给superset图表设置缓存/">
+    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2016/11/20/一行命令实现csv文件可视化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="向自由">
@@ -292,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">给superset图表设置缓存</h1>
+          <h1 class="post-title" itemprop="name headline">一行命令实现csv文件可视化</h1>
         
 
         <div class="post-meta">
@@ -304,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T23:59:59+08:00">
-                2017-12-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-20T17:35:04+08:00">
+                2016-11-20
               </time>
             
 
@@ -375,23 +378,28 @@
       
 
       
-        <h3 id="设置缓存"><a href="#设置缓存" class="headerlink" title="设置缓存"></a>设置缓存</h3><p>方式一：使用simple方式（使用本地Python字典）缓存，修改配置文件<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">CACHE_DEFAULT_TIMEOUT</span> = <span class="number">60</span> * <span class="number">60</span> * <span class="number">6</span></span><br><span class="line"><span class="attr">CACHE_CONFIG</span> = &#123;<span class="string">'CACHE_TYPE'</span>: ‘simple’&#125;</span><br></pre></td></tr></table></figure></p>
-<p>方式二：使用redis方式缓存，修改配置文件(强烈推荐这种方式)</p>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line">CACHE_DEFAULT_TIMEOUT = <span class="number">60</span> * <span class="number">60</span> * <span class="number">6</span></span><br><span class="line">CACHE_CONFIG = &#123;<span class="string">'CACHE_TYPE'</span>: <span class="string">'redis'</span>,</span><br><span class="line">                <span class="string">'CACHE_REDIS_HOST'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">                <span class="string">'CACHE_REDIS_PORT'</span>: <span class="number">6379</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="安装redis数据库"><a href="#安装redis数据库" class="headerlink" title="安装redis数据库"></a>安装redis数据库</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install redis-server</span><br><span class="line"><span class="keyword">ps</span> -aux | <span class="keyword">grep</span> redis</span><br><span class="line">netstat -nlt|<span class="keyword">grep</span> <span class="number">6379</span></span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">keys</span> *</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="重启superset服务"><a href="#重启superset服务" class="headerlink" title="重启superset服务"></a>重启superset服务</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | <span class="type">grep</span> <span class="string">"superset"</span> | <span class="type">awk</span> '&#123;print $<span class="number">2</span>&#125;' | <span class="type">xargs</span> kill</span><br><span class="line">nohup superset runserver &gt;output <span class="number">2</span>&gt;&amp;<span class="number">1</span> &amp;</span><br></pre></td></tr></table></figure>
-<h3 id="设置切片-可视化图表-缓存时间"><a href="#设置切片-可视化图表-缓存时间" class="headerlink" title="设置切片(可视化图表)缓存时间"></a>设置切片(可视化图表)缓存时间</h3><p>1.缓存时间选取优先级<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self<span class="selector-class">.slice</span><span class="selector-class">.cache_timeout</span> &gt; self<span class="selector-class">.datasource</span><span class="selector-class">.cache_timeout</span> &gt; self<span class="selector-class">.datasource</span><span class="selector-class">.database</span><span class="selector-class">.cache_timeout</span> &gt; CACHE_DEFAULT_TIMEOUT</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2017/12/20/给superset图表设置缓存/B5B1D342-DD3B-4952-97EF-58749A6A1DFC.png" alt="logo"></p>
-<p>2.自定义切片缓存时间步骤</p>
+        <h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>csvtotable是一个命令行工具，可以把csv文件转换为可以搜索和排序的Html表格。<br>项目GitHub地址：<a href="https://github.com/vividvilla/csvtotable" target="_blank" rel="noopener">https://github.com/vividvilla/csvtotable</a></p>
+<p>mac终端下一行命令快速安装：sudo pip install –upgrade csvtotable。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>通过mac终端执行下面这条命令安装。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> <span class="comment">--upgrade csvtotable</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2016/11/20/一行命令实现csv文件可视化/A05A6319-9834-4356-83B7-97B66E5C3FD6.png" alt="logo"></p>
+<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><ul>
+<li>直接通过浏览器预览</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csvtotable filename<span class="selector-class">.csv</span> -s</span><br></pre></td></tr></table></figure>
 <ul>
-<li>点击切片Tab，找到对应切片；</li>
-<li>点击编辑记录按钮；</li>
-<li>自定义cache timeout的时间，如果为空，默认缓存时间为60<em>60</em>2秒</li>
+<li>本地生成html文件，直接打开filename.html文件</li>
 </ul>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="http://jingyan.baidu.com/article/948f592401d172d80ff5f99a.html" target="_blank" rel="noopener">Ubuntu下安装和配置redis数据库</a> </li>
-</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">csvtotable</span> <span class="selector-tag">filename</span><span class="selector-class">.csv</span> <span class="selector-tag">filename</span><span class="selector-class">.html</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>1.指定分隔符，默认分隔符是”,”。若不是”,”分隔符，使用-d参数指定分隔符。</p>
+<p>举个栗子：test.csv文件内容如下：<br><img src="/2016/11/20/一行命令实现csv文件可视化/B276D913-F92C-43AE-AE0A-AADAC79FA42A.png" alt="logo"></p>
+<p>可视化csv文件，执行命令：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csvtotable <span class="keyword">test</span> -<span class="keyword">d</span> <span class="string">";"</span> -<span class="built_in">s</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2016/11/20/一行命令实现csv文件可视化/FBB4871F-6CFC-4BA2-B4F9-E9E629D7969E.png" alt="logo"></p>
+<p>2.设置文件标题，默认显示”Table”。使用-c参数指定文件标题。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csvtotable <span class="keyword">test</span>.csv -<span class="keyword">d</span> “;" -c “my <span class="keyword">test</span>” -<span class="built_in">s</span></span><br></pre></td></tr></table></figure>
+<p>3.设置加载行数，默认加载所有行。使用-dl参数设置加载数据行数。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csvtotable <span class="keyword">test</span>.csv -<span class="keyword">d</span> “;" -c “my <span class="keyword">test</span>” -dl 2 -<span class="built_in">s</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2016/11/20/一行命令实现csv文件可视化/0D47639A-7F3B-4CD3-92A5-FA91B400DE3E.png" alt="logo"></p>
 
       
     </div>
@@ -409,11 +417,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/缓存/" rel="tag"># 缓存</a>
+            <a href="/tags/数据可视化/" rel="tag"># 数据可视化</a>
           
-            <a href="/tags/superset/" rel="tag"># superset</a>
-          
-            <a href="/tags/redis/" rel="tag"># redis</a>
+            <a href="/tags/csvtotable/" rel="tag"># csvtotable</a>
           
         </div>
       
@@ -426,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/20/快速搭建superset可视化分析平台/" rel="next" title="快速搭建superset可视化分析平台">
-                <i class="fa fa-chevron-left"></i> 快速搭建superset可视化分析平台
+              <a href="/2016/11/16/给superset图表设置缓存/" rel="next" title="给superset图表设置缓存">
+                <i class="fa fa-chevron-left"></i> 给superset图表设置缓存
               </a>
             
           </div>
@@ -568,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置缓存"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x8BBE;&#x7F6E;&#x7F13;&#x5B58;" class="headerlink" title="&#x8BBE;&#x7F6E;&#x7F13;&#x5B58;"></a>&#x8BBE;&#x7F6E;&#x7F13;&#x5B58;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装redis数据库"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;redis&#x6570;&#x636E;&#x5E93;" class="headerlink" title="&#x5B89;&#x88C5;redis&#x6570;&#x636E;&#x5E93;"></a>&#x5B89;&#x88C5;redis&#x6570;&#x636E;&#x5E93;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启superset服务"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x91CD;&#x542F;superset&#x670D;&#x52A1;" class="headerlink" title="&#x91CD;&#x542F;superset&#x670D;&#x52A1;"></a>&#x91CD;&#x542F;superset&#x670D;&#x52A1;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置切片-可视化图表-缓存时间"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x8BBE;&#x7F6E;&#x5207;&#x7247;-&#x53EF;&#x89C6;&#x5316;&#x56FE;&#x8868;-&#x7F13;&#x5B58;&#x65F6;&#x95F4;" class="headerlink" title="&#x8BBE;&#x7F6E;&#x5207;&#x7247;(&#x53EF;&#x89C6;&#x5316;&#x56FE;&#x8868;)&#x7F13;&#x5B58;&#x65F6;&#x95F4;"></a>&#x8BBE;&#x7F6E;&#x5207;&#x7247;(&#x53EF;&#x89C6;&#x5316;&#x56FE;&#x8868;)&#x7F13;&#x5B58;&#x65F6;&#x95F4;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方式"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;&#x65B9;&#x5F0F;" class="headerlink" title="&#x4F7F;&#x7528;&#x65B9;&#x5F0F;"></a>&#x4F7F;&#x7528;&#x65B9;&#x5F0F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x5E38;&#x7528;&#x547D;&#x4EE4;" class="headerlink" title="&#x5E38;&#x7528;&#x547D;&#x4EE4;"></a>&#x5E38;&#x7528;&#x547D;&#x4EE4;</span></a></li></ol></div>
             
 
           </div>
