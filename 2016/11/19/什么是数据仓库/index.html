@@ -103,7 +103,7 @@
 <meta property="og:description" content="数据仓库数据仓库可以理解成一个抽象的数据库，内部装载着经过清洗、验证的高质量数据。这些数据经过了重构，能让用户更快速、更便捷地查询到自己所需要的数据。 数据仓库关键部分:  要对数据进行验证和清洗，保证高质量 要对数据进行重构，使之更适合用于分析（可以理解为，SQL查询更为方便）  数据仓库的特点 面向主题: 面向主题特性是数据仓库和操作型数据库的根本区别。操作型数据库是为了支撑各种业务而建立，而">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://liuzhuang.me/2016/11/19/什么是数据仓库/20171121.jpg">
-<meta property="og:updated_time" content="2017-12-25T07:36:04.000Z">
+<meta property="og:updated_time" content="2017-12-25T07:41:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="什么是数据仓库">
 <meta name="twitter:description" content="数据仓库数据仓库可以理解成一个抽象的数据库，内部装载着经过清洗、验证的高质量数据。这些数据经过了重构，能让用户更快速、更便捷地查询到自己所需要的数据。 数据仓库关键部分:  要对数据进行验证和清洗，保证高质量 要对数据进行重构，使之更适合用于分析（可以理解为，SQL查询更为方便）  数据仓库的特点 面向主题: 面向主题特性是数据仓库和操作型数据库的根本区别。操作型数据库是为了支撑各种业务而建立，而">
@@ -385,19 +385,17 @@
 <li>前端应用：和操作型数据库一样，数据仓库通常提供具有直接访问数据仓库功能的前端应用，这些应用也被称为BI(商务智能)应用；即面向数据使用者的应用，比如各种报表以及可视化应用。</li>
 </ul>
 <h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><p>数据建模是数据仓库成败的关键，甚至可以说，设计数据仓库，主要就是进行数据建模。<br>数据模型是一种抽象，描述了数据仓库承诺会给用户提供什么数据，以及这些数据是怎样串联起来的。它就相当于数据仓库的骨架。用户可以通过了解这个骨架，去探索对数据的深入应用。<br>数据建模有多种不同的方法，Kimball和Inmon各自提出了自己的看法。</p>
+<h5 id="Kimball：维度模型"><a href="#Kimball：维度模型" class="headerlink" title="Kimball：维度模型"></a>Kimball：维度模型</h5><p>Kimball的想法是，把数据分为维度和度量两个层面。<br>维度层面的数据主要用于分析对数据进行切片、切块等操作，度量层面的数据则是我们最关注、最核心的业务数据，一般都是具体的数字。<br>这一建模方法被称为维度建模法，数据库表被分为两种类型：维度表和事实表。维度表就储存维度层面的数据，事实表储存度量层面的数据，并用外键与维度表关联。<br>事实表来自业务活动，是建模和数据分析核心，而维度表主要提供了不同角度的分析，还可以根据需要进行下钻或上卷。</p>
+<h5 id="Inmon：数据分发模型"><a href="#Inmon：数据分发模型" class="headerlink" title="Inmon：数据分发模型"></a>Inmon：数据分发模型</h5><p>Inmon的想法是，首先建立一个符合第三范式的，最细粒度的数据库，其中保存着最原始的数据。一般来说这个数据库不直接面向用户。<br>然后在这个数据库的基础上做进一步的聚合，生成多个不同的小型数据库，以满足最终用户的不同需求。<br>Inmon的数据建模分三个层次，从高到低逐步推进扩展，分别是高层建模（实体关系）、中间层建模（数据项集或DIS）、底层建模（物理模型）</p>
 <ul>
-<li>Kimball：维度模型</li>
+<li><p>概念模型（高层）<br>一个主题中含有的实体，以及他们之间的关系。比如订单，顾客，都可以作为一个实体，而一个顾客可能含有多个订单，就是1对多的关系。<br>主要关注业务和宏观层面。</p>
+</li>
+<li><p>逻辑模型（中间层）<br>对一个实体所拥有的数据做具体的描述，比如顾客这个实体，他会有账号相关信息如用户名、密码、余额，也会有地址信息，如国家、城市、街道等等。<br>主要关注业务和微观层面。<br>在这个层面上建模，实质就是建立模型对应的表了。应该要能描述出最终用户所能用到的所有数据。</p>
+</li>
+<li><p>物理模型（底层）<br>具体到数据库表的设计，需要有针对性的对查询做优化，比如可能会合并中间层模型中的一些表以提高查询性能。物理模型中的表应该由逻辑模型生成，再根据优化需要做进一步调整，可能并不完全一致，但应该要能查询到逻辑模型所承诺的数据。<br>主要关注技术和微观层面。</p>
+</li>
 </ul>
-<p>Kimball的想法是，把数据分为维度和度量两个层面。<br>维度层面的数据主要用于分析对数据进行切片、切块等操作，度量层面的数据则是我们最关注、最核心的业务数据，一般都是具体的数字。<br>这一建模方法被称为维度建模法，数据库表被分为两种类型：维度表和事实表。维度表就储存维度层面的数据，事实表储存度量层面的数据，并用外键与维度表关联。<br>事实表来自业务活动，是建模和数据分析核心，而维度表主要提供了不同角度的分析，还可以根据需要进行下钻或上卷。</p>
-<ul>
-<li>Inmon：数据分发模型<br>Inmon的想法是，首先建立一个符合第三范式的，最细粒度的数据库，其中保存着最原始的数据。一般来说这个数据库不直接面向用户。<br>然后在这个数据库的基础上做进一步的聚合，生成多个不同的小型数据库，以满足最终用户的不同需求。<br>Inmon的数据建模分三个层次，从高到低逐步推进扩展，分别是高层建模（实体关系）、中间层建模（数据项集或DIS）、底层建模（物理模型）</li>
-</ul>
-<blockquote>
-<p>概念模型（高层）<br>一个主题中含有的实体，以及他们之间的关系。比如订单，顾客，都可以作为一个实体，而一个顾客可能含有多个订单，就是1对多的关系。<br>主要关注业务和宏观层面。</p>
-<p>逻辑模型（中间层）<br>对一个实体所拥有的数据做具体的描述，比如顾客这个实体，他会有账号相关信息如用户名、密码、余额，也会有地址信息，如国家、城市、街道等等。<br>主要关注业务和微观层面。<br>在这个层面上建模，实质就是建立模型对应的表了。应该要能描述出最终用户所能用到的所有数据。</p>
-<p>物理模型（底层）<br>具体到数据库表的设计，需要有针对性的对查询做优化，比如可能会合并中间层模型中的一些表以提高查询性能。物理模型中的表应该由逻辑模型生成，再根据优化需要做进一步调整，可能并不完全一致，但应该要能查询到逻辑模型所承诺的数据。<br>主要关注技术和微观层面。</p>
-</blockquote>
-<h4 id="ETL设计"><a href="#ETL设计" class="headerlink" title="ETL设计"></a>ETL设计</h4><p>ETL的工作是把不同数据源的数据进行整合，然后加载到数据仓库中。<br>实质上是在数据模型的基础上填充具体的事实数据，相当于数据仓库的血肉。</p>
+<h4 id="ETL设计"><a href="#ETL设计" class="headerlink" title="ETL设计"></a>ETL设计</h4><p>ETL的工作是把不同数据源的数据进行整合，然后加载到数据仓库中。实质上是在数据模型的基础上填充具体的事实数据，相当于数据仓库的血肉。</p>
 <p>ETL可以通过多种多样的方式实现，既可以写脚本，也可以用工具，根据实际情景和需求来决定。但无论如何，都需要对数据处理设定好具体的规则，这是与具体实现无关的东西。比如说，需要明确哪些数据是可信的，对于不同来源的同一数据，如果相互有矛盾，该如何取舍，对于缺失的数据，又该如何进行处理。这些都属于ETL的设计范围。<br>总的来说，ETL的实现是一个技术问题，而设计则是需要和业务紧密联系的。</p>
 
       
@@ -575,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x4ED3;&#x5E93;" class="headerlink" title="&#x6570;&#x636E;&#x4ED3;&#x5E93;"></a>&#x6570;&#x636E;&#x4ED3;&#x5E93;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库的特点"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7279;&#x70B9;" class="headerlink" title="&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7279;&#x70B9;"></a>&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7279;&#x70B9;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库的组成部分"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;" class="headerlink" title="&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;"></a>&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据模型"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x6A21;&#x578B;" class="headerlink" title="&#x6570;&#x636E;&#x6A21;&#x578B;"></a>&#x6570;&#x636E;&#x6A21;&#x578B;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ETL设计"><span class="nav-number">5.</span> <span class="nav-text"><a href="#ETL&#x8BBE;&#x8BA1;" class="headerlink" title="ETL&#x8BBE;&#x8BA1;"></a>ETL&#x8BBE;&#x8BA1;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x4ED3;&#x5E93;" class="headerlink" title="&#x6570;&#x636E;&#x4ED3;&#x5E93;"></a>&#x6570;&#x636E;&#x4ED3;&#x5E93;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库的特点"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7279;&#x70B9;" class="headerlink" title="&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7279;&#x70B9;"></a>&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7279;&#x70B9;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库的组成部分"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;" class="headerlink" title="&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;"></a>&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据模型"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x6A21;&#x578B;" class="headerlink" title="&#x6570;&#x636E;&#x6A21;&#x578B;"></a>&#x6570;&#x636E;&#x6A21;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Kimball：维度模型"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#Kimball&#xFF1A;&#x7EF4;&#x5EA6;&#x6A21;&#x578B;" class="headerlink" title="Kimball&#xFF1A;&#x7EF4;&#x5EA6;&#x6A21;&#x578B;"></a>Kimball&#xFF1A;&#x7EF4;&#x5EA6;&#x6A21;&#x578B;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Inmon：数据分发模型"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#Inmon&#xFF1A;&#x6570;&#x636E;&#x5206;&#x53D1;&#x6A21;&#x578B;" class="headerlink" title="Inmon&#xFF1A;&#x6570;&#x636E;&#x5206;&#x53D1;&#x6A21;&#x578B;"></a>Inmon&#xFF1A;&#x6570;&#x636E;&#x5206;&#x53D1;&#x6A21;&#x578B;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ETL设计"><span class="nav-number">5.</span> <span class="nav-text"><a href="#ETL&#x8BBE;&#x8BA1;" class="headerlink" title="ETL&#x8BBE;&#x8BA1;"></a>ETL&#x8BBE;&#x8BA1;</span></a></li></ol></div>
             
 
           </div>
