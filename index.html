@@ -273,6 +273,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2017/12/05/使用lucene查询语法实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="向自由">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/12525119?s=400&u=5550dcbcd68a2b0d57e260257db193b84b089688&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向自由">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/05/使用lucene查询语法实践/" itemprop="url">使用lucene查询语法实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-05T18:41:45+08:00">
+                2017-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/05/使用lucene查询语法实践/" class="leancloud_visitors" data-flag-title="使用lucene查询语法实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>Kibana在ELK阵营中用来查询展示数据<br>elasticsearch构建在Lucene之上，过滤器语法和Lucene相同</p>
+</blockquote>
+<h3 id="字段检索"><a href="#字段检索" class="headerlink" title="字段检索"></a>字段检索</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">可以按Kibana页面左侧显示的字段搜索</span><br><span class="line"></span><br><span class="line">限定字某字段段全文搜索：<span class="string">field:</span> value</span><br><span class="line">精确检索：在关键字上加上双引号即可 <span class="string">field:</span> <span class="string">"value"</span></span><br><span class="line">查看项目名称为test的文档 <span class="string">project:</span> test</span><br><span class="line"></span><br><span class="line">判断字段是否存在 </span><br><span class="line">* 存在某字段 <span class="string">_exists_:</span> field</span><br><span class="line">* 不含某字段 <span class="string">_missing_:</span> field</span><br><span class="line"></span><br><span class="line">查看不含is_test字段的文档 <span class="string">_missing_:</span> test</span><br></pre></td></tr></table></figure>
+<h3 id="范围检索"><a href="#范围检索" class="headerlink" title="范围检索"></a>范围检索</h3><figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">可以对数值|字符串|时间|IP类型的字段做范围查询</span><br><span class="line"></span><br><span class="line">具体语法如下: <span class="keyword">field</span>: [L <span class="keyword">TO</span> U] 或者 <span class="keyword">field</span>: [L <span class="keyword">TO</span> U&#125; </span><br><span class="line"></span><br><span class="line">其中[]表示闭区间,端点值会包含在范围内 &#123;&#125;表示开区间,端点值不包含在范围内, [/&#125;可以混合使用</span><br></pre></td></tr></table></figure>
+<p>比如查询某一范围内的数据:<br>req_date: [“now-1h” TO “now”] 请求日期在最近1小时的数据<br>req_ip:   [“127.0.0.1” TO “127.0.10.2”]<br>read_cnt: [5 TO 30]  阅读次数为5~30的数据<br>user_tag: {A TO F]   查看用户标签为A~F的数据<br>user_age: [20 TO *]  查看用户年龄大于20的数据</p>
+<p>user_age:&gt;=20<br>user_age:20<br>user_age:(&gt;=10 AND &lt;20)</p>
+<h3 id="逻辑操作"><a href="#逻辑操作" class="headerlink" title="逻辑操作"></a>逻辑操作</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">AND</span> 逻辑与 可以用&amp;&amp;替换 注意必须使用大写 如果不使用<span class="keyword">AND</span>，而是<span class="keyword">and</span>，可能会被单做关键词进行搜索！</span><br><span class="line"><span class="keyword">OR</span>  逻辑或 可以用||替换 </span><br><span class="line"><span class="keyword">NOT</span> 排除某个搜索条件 可以用!替换 通常用来做差集操作</span><br><span class="line">+   包含此项 包含该操作符后跟着的搜索条件 可单独使用</span><br><span class="line">-   不能含有此项 排除该操作符后跟着的搜索条件</span><br></pre></td></tr></table></figure>
+<p>比如:<br>+hello 结果中必须含有hello<br>-hello world and hello data 结果中不能含有hello，剩余部分(world and hello data)尽量匹配到<br>tom &amp;&amp; !John  包含tom 不包含John的数据<br>tom NOT John  包含tom 不包含John的数据</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/05/使用lucene查询语法实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2016/11/21/用SQLiteWeb浏览SQLite数据库中的数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -972,177 +1115,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2016/11/16/给superset图表设置缓存/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="向自由">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/12525119?s=400&u=5550dcbcd68a2b0d57e260257db193b84b089688&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向自由">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/16/给superset图表设置缓存/" itemprop="url">给superset图表设置缓存</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-16T23:59:59+08:00">
-                2016-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据可视化/" itemprop="url" rel="index">
-                    <span itemprop="name">数据可视化</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据可视化/开源工具/" itemprop="url" rel="index">
-                    <span itemprop="name">开源工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/11/16/给superset图表设置缓存/" class="leancloud_visitors" data-flag-title="给superset图表设置缓存">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="设置缓存"><a href="#设置缓存" class="headerlink" title="设置缓存"></a>设置缓存</h4><p>方式一：使用simple方式（使用本地Python字典）缓存，修改配置文件<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">CACHE_DEFAULT_TIMEOUT</span> = <span class="number">60</span> * <span class="number">60</span> * <span class="number">6</span></span><br><span class="line"><span class="attr">CACHE_CONFIG</span> = &#123;<span class="string">'CACHE_TYPE'</span>: ‘simple’&#125;</span><br></pre></td></tr></table></figure></p>
-<p>方式二：使用redis方式缓存，修改配置文件(强烈推荐这种方式)</p>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line">CACHE_DEFAULT_TIMEOUT = <span class="number">60</span> * <span class="number">60</span> * <span class="number">6</span></span><br><span class="line">CACHE_CONFIG = &#123;<span class="string">'CACHE_TYPE'</span>: <span class="string">'redis'</span>,</span><br><span class="line">                <span class="string">'CACHE_REDIS_HOST'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">                <span class="string">'CACHE_REDIS_PORT'</span>: <span class="number">6379</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="安装redis数据库"><a href="#安装redis数据库" class="headerlink" title="安装redis数据库"></a>安装redis数据库</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install redis-server</span><br><span class="line"><span class="keyword">ps</span> -aux | <span class="keyword">grep</span> redis</span><br><span class="line">netstat -nlt|<span class="keyword">grep</span> <span class="number">6379</span></span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">keys</span> *</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/16/给superset图表设置缓存/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1193,7 +1165,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
