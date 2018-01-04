@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2017/12/29/Jupyter使用Plotly可视化/">
+    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2018/01/04/Pandas代码优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="向自由">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/29/Jupyter使用Plotly可视化/" itemprop="url">Jupyter使用Plotly可视化</a></h1>
+                <a class="post-title-link" href="/2018/01/04/Pandas代码优化/" itemprop="url">Pandas代码优化</a></h1>
         
 
         <div class="post-meta">
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T16:00:14+08:00">
-                2017-12-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T18:30:25+08:00">
+                2018-01-04
               </time>
             
 
@@ -322,7 +322,7 @@
 
           
           
-             <span id="/2017/12/29/Jupyter使用Plotly可视化/" class="leancloud_visitors" data-flag-title="Jupyter使用Plotly可视化">
+             <span id="/2018/01/04/Pandas代码优化/" class="leancloud_visitors" data-flag-title="Pandas代码优化">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -354,9 +354,25 @@
 
       
         
-          
-            
-          
+          <p>在数据分析时，经常会遇到这种操作，分析每个人的行为数据。比如: 分析每个用户在过去一个月的消费总金额，转换成sql可能为:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select uid, sum(pay_price) as amt</span><br><span class="line"><span class="keyword">from</span> trade_base_info</span><br><span class="line">group by uid</span><br></pre></td></tr></table></figure></p>
+<p>假设现在有每个用户的消费数据(一行是一条消费)。在Pandas中，我们会通过以下方式实现: </p>
+<ul>
+<li>在用索引的DataFrame行上的Crude looping</li>
+<li>用iterrows()循环</li>
+<li>用apply()循环</li>
+<li>Pandas Series矢量化</li>
+<li>NumPy数组矢量化</li>
+</ul>
+<h4 id="方法1-使用crude-loop方法实现循环"><a href="#方法1-使用crude-loop方法实现循环" class="headerlink" title="方法1 使用crude loop方法实现循环"></a>方法1 使用crude loop方法实现循环</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_user_dict</span><span class="params">(df)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    方法1</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    user_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(df)):</span><br><span class="line">        uid = df.iloc[i][<span class="string">"uid"</span>]</span><br><span class="line">        amt, exm = df.iloc[i][<span class="string">"amt"</span>], df.iloc[i][<span class="string">"exm"</span>]</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span> uid <span class="keyword">not</span> <span class="keyword">in</span> user_dict:</span><br><span class="line">            user_dict[uid] = &#123;<span class="string">"sum_amt"</span>: <span class="number">0</span>, <span class="string">"exm"</span>: <span class="number">0</span>&#125;</span><br><span class="line">        user_dict[uid][<span class="string">"sum_amt"</span>] += amt</span><br><span class="line">        user_dict[uid][<span class="string">"exm"</span>] = exm</span><br><span class="line">    <span class="keyword">return</span> user_dict</span><br><span class="line">    </span><br><span class="line">user_dict = get_user_dict(df)</span><br></pre></td></tr></table></figure>
+<h4 id="方法2-使用iterrows-方法循环"><a href="#方法2-使用iterrows-方法循环" class="headerlink" title="方法2 使用iterrows()方法循环"></a>方法2 使用iterrows()方法循环</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_user_dict</span><span class="params">(df)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    方法2</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    user_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> index, row <span class="keyword">in</span> df.iterrows():</span><br><span class="line">        uid = row[<span class="string">"uid"</span>]</span><br><span class="line">        amt, exm = row[<span class="string">"amt"</span>], row[<span class="string">"exm"</span>]</span><br><span class="line">        <span class="keyword">if</span> uid <span class="keyword">not</span> <span class="keyword">in</span> user_dict:</span><br><span class="line">            user_dict[uid] = &#123;<span class="string">"sum_amt"</span>: <span class="number">0</span>, <span class="string">"exm"</span>: <span class="number">0</span>&#125;</span><br><span class="line">        user_dict[uid][<span class="string">"sum_amt"</span>] += amt</span><br><span class="line">        user_dict[uid][<span class="string">"exm"</span>] = exm</span><br><span class="line">    <span class="keyword">return</span> user_dict</span><br><span class="line"> </span><br><span class="line">user_dict = get_user_dict(df)</span><br></pre></td></tr></table></figure>
+<h4 id="方法3-使用apply方法实现更好的循环"><a href="#方法3-使用apply方法实现更好的循环" class="headerlink" title="方法3 使用apply方法实现更好的循环"></a>方法3 使用apply方法实现更好的循环</h4><figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">final_df = df.groupby(<span class="string">"uid"</span>).apply(lambda x: pd.Series(&#123;</span><br><span class="line">    <span class="string">'sum_amt'</span>: np.<span class="built_in">sum</span>(x[<span class="string">'amt'</span>]),</span><br><span class="line">    <span class="string">'exm'</span>: <span class="built_in">list</span>(x.exm)[<span class="number">0</span>] <span class="keyword">if</span> <span class="built_in">list</span>(x.exm)[<span class="number">0</span>] &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>&#125;</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/04/Pandas代码优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1136,7 +1152,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1178,7 +1194,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
