@@ -97,16 +97,16 @@
 <meta name="description" content="应用场景 任何工具都有自己的主要应用场景，结合主要应用场景来学习实践，会更为高效。Airflow作为一款调度系统，主要应用场景就是ETL调度。在一个ETL工作流中，通常会涉及有依赖的任务，必须按一定的顺序执行。另外，ETL还是按周期定时执行的，比如每月，每周，每天，甚至每小时执行一次。一款调度系统，必须要解决最核心的几个需求：  可定义任务依赖 可周期定时执行 可视化监控，出错重试，失败报警Air">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Airflow基本概念">
-<meta property="og:url" content="http://liuzhuang.me/2018/05/20/Airflow基本概念/index.html">
+<meta property="og:url" content="http://liuzhuang.me/2018/04/20/Airflow基本概念/index.html">
 <meta property="og:site_name" content="向自由">
 <meta property="og:description" content="应用场景 任何工具都有自己的主要应用场景，结合主要应用场景来学习实践，会更为高效。Airflow作为一款调度系统，主要应用场景就是ETL调度。在一个ETL工作流中，通常会涉及有依赖的任务，必须按一定的顺序执行。另外，ETL还是按周期定时执行的，比如每月，每周，每天，甚至每小时执行一次。一款调度系统，必须要解决最核心的几个需求：  可定义任务依赖 可周期定时执行 可视化监控，出错重试，失败报警Air">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://liuzhuang.me/2018/05/20/Airflow基本概念/airflow.jpg">
-<meta property="og:updated_time" content="2018-05-20T15:21:14.319Z">
+<meta property="og:image" content="http://liuzhuang.me/2018/04/20/Airflow基本概念/airflow.jpg">
+<meta property="og:updated_time" content="2018-05-20T15:23:41.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Airflow基本概念">
 <meta name="twitter:description" content="应用场景 任何工具都有自己的主要应用场景，结合主要应用场景来学习实践，会更为高效。Airflow作为一款调度系统，主要应用场景就是ETL调度。在一个ETL工作流中，通常会涉及有依赖的任务，必须按一定的顺序执行。另外，ETL还是按周期定时执行的，比如每月，每周，每天，甚至每小时执行一次。一款调度系统，必须要解决最核心的几个需求：  可定义任务依赖 可周期定时执行 可视化监控，出错重试，失败报警Air">
-<meta name="twitter:image" content="http://liuzhuang.me/2018/05/20/Airflow基本概念/airflow.jpg">
+<meta name="twitter:image" content="http://liuzhuang.me/2018/04/20/Airflow基本概念/airflow.jpg">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://liuzhuang.me/2018/05/20/Airflow基本概念/"/>
+  <link rel="canonical" href="http://liuzhuang.me/2018/04/20/Airflow基本概念/"/>
 
 
 
@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2018/05/20/Airflow基本概念/">
+    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2018/04/20/Airflow基本概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="向自由">
@@ -303,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T23:06:53+08:00">
-                2018-05-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T23:06:53+08:00">
+                2018-04-20
               </time>
             
 
@@ -321,7 +321,7 @@
 
           
           
-             <span id="/2018/05/20/Airflow基本概念/" class="leancloud_visitors" data-flag-title="Airflow基本概念">
+             <span id="/2018/04/20/Airflow基本概念/" class="leancloud_visitors" data-flag-title="Airflow基本概念">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,7 +352,7 @@
       
 
       
-        <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p><img src="/2018/05/20/Airflow基本概念/airflow.jpg" alt="logo"></p>
+        <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p><img src="/2018/04/20/Airflow基本概念/airflow.jpg" alt="logo"></p>
 <p>任何工具都有自己的主要应用场景，结合主要应用场景来学习实践，会更为高效。<br>Airflow作为一款调度系统，主要应用场景就是ETL调度。在一个ETL工作流中，通常会涉及有依赖的任务，必须按一定的顺序执行。<br>另外，ETL还是按周期定时执行的，比如每月，每周，每天，甚至每小时执行一次。一款调度系统，必须要解决最核心的几个需求：</p>
 <ol>
 <li>可定义任务依赖</li>
@@ -362,6 +362,7 @@
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>在ETL调度这个场景下，Airflow把几个关键实体抽象了出来，了解这些抽象实体，有助于理解Airflow的编程模型，从而更好地编写Airflow调度任务。<br>总体来说，最重要的概念有两个，一个是DAG，一个是Scheduler。DAG解决了定义任务依赖的需求，Scheduler解决了周期定时执行的需求。</p>
 <h4 id="Operator-amp-Task-amp-Task-Instance"><a href="#Operator-amp-Task-amp-Task-Instance" class="headerlink" title="Operator &amp; Task &amp; Task Instance"></a>Operator &amp; Task &amp; Task Instance</h4><p>这三个概念是息息相关的，逐级地细化。Operator是基本操作的抽象，Task是Operator的参数化对象，Task Instance是在Task的一个实际操作。比如，执行Hive语句，是一个Operator，可以称为HiveOperator。如果再给出一条hql，那就变成了一个执行这条hql的具体任务，称之为Task。如果再细一点，具体到在某天某个时间点，执行了这个Task，那就是一个Task Instance。</p>
 <p>Airflow本身自带了大量常用的Operator，比如BashOperator，可以用于执行shell命令，HiveOperator，可以用于执行Hive命令。此外，如果有些特殊的需求，还可以自己定制Operator，以插件的形式使用。这在某些操作比较复杂的任务上非常有用，将一组操作合并成一个Operator，可以大大简化DAG的编写，在管理面板中查看WorkFlow时，也会显得比较整洁。</p>
+<a id="more"></a>
 <h4 id="DAG-amp-DAG-Run"><a href="#DAG-amp-DAG-Run" class="headerlink" title="DAG &amp; DAG Run"></a>DAG &amp; DAG Run</h4><p>DAG是Directed acyclic graph(有向无环图)的缩写。通常来说，一个DAG对应一个ETL工作流。<br>在DAG下可以添加若干个Task，代表着一个ETL工作流中的原子操作，这些Task可以设置上下游的依赖关系。另外，可以为DAG设置一些默认参数，这些默认参数会自动传递给Task。例如，可以设定DAG的执行周期为每天凌晨1点，那么，在这个DAG之下的Task，如果没有设定执行周期，则全部都会被设定为凌晨1点。</p>
 <p>DAG Run是DAG的一个执行实例，类似于Task Instance 与Task的关系。DAG Run可以通过Airflow Schduler自动生成，也可以通过命令行或Restful API手动生成。<br>当生成一个DAG Run时，它的所有无上游的Task，会被同时实例化，也就是生成相应的Task Instance。然后会按照顺序，当一个Task的所有上游依赖都执行完成时，就会实例化下游的Task逐个把Task执行完。如果中间某个Task失败了，会根据规则决定是继续执行还是跳过。</p>
 <h4 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h4><p>Scheduler可以理解为DAG的调度中心，主要用途就是保证DAG能定时启动。每一个DAG都有一个start_date和schedule_interval参数。这两个参数分别代表第一个DAG Run对应的执行时间，和DAG Run生成的频率。Scheduler会自动检查这个DAG的DAG Run生成情况，如果某一天的DAG Run 缺失了，就会自动生成一个新的，并把state设定成Running。<br>Scheduler生成的DAG Run，在同一个时间点上是唯一的，比如说如果DAG Run被设定为1天1个，每天凌晨3点生成，那么在2018-03-01这一天，就只会有一个由Scheduler生成的DAG Run，如果这个DAG Run报错了，没执行完。想要让Scheduler自动重新执行这个DAG Run的流程，就需要把原本的DAG Run删除才行。</p>
@@ -391,7 +392,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/20/Airflow离线任务调度/" rel="next" title="Aiflow 离线任务调度">
+              <a href="/2018/04/20/Airflow离线任务调度/" rel="next" title="Aiflow 离线任务调度">
                 <i class="fa fa-chevron-left"></i> Aiflow 离线任务调度
               </a>
             

@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2018/05/20/Airflow基本概念/">
+    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2018/04/20/Airflow基本概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="向自由">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/20/Airflow基本概念/" itemprop="url">Airflow基本概念</a></h1>
+                <a class="post-title-link" href="/2018/04/20/Airflow基本概念/" itemprop="url">Airflow基本概念</a></h1>
         
 
         <div class="post-meta">
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T23:06:53+08:00">
-                2018-05-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T23:06:53+08:00">
+                2018-04-20
               </time>
             
 
@@ -322,7 +322,7 @@
 
           
           
-             <span id="/2018/05/20/Airflow基本概念/" class="leancloud_visitors" data-flag-title="Airflow基本概念">
+             <span id="/2018/04/20/Airflow基本概念/" class="leancloud_visitors" data-flag-title="Airflow基本概念">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -354,8 +354,7 @@
 
       
         
-          
-            <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p><img src="/2018/05/20/Airflow基本概念/airflow.jpg" alt="logo"></p>
+          <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p><img src="/2018/04/20/Airflow基本概念/airflow.jpg" alt="logo"></p>
 <p>任何工具都有自己的主要应用场景，结合主要应用场景来学习实践，会更为高效。<br>Airflow作为一款调度系统，主要应用场景就是ETL调度。在一个ETL工作流中，通常会涉及有依赖的任务，必须按一定的顺序执行。<br>另外，ETL还是按周期定时执行的，比如每月，每周，每天，甚至每小时执行一次。一款调度系统，必须要解决最核心的几个需求：</p>
 <ol>
 <li>可定义任务依赖</li>
@@ -365,13 +364,13 @@
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>在ETL调度这个场景下，Airflow把几个关键实体抽象了出来，了解这些抽象实体，有助于理解Airflow的编程模型，从而更好地编写Airflow调度任务。<br>总体来说，最重要的概念有两个，一个是DAG，一个是Scheduler。DAG解决了定义任务依赖的需求，Scheduler解决了周期定时执行的需求。</p>
 <h4 id="Operator-amp-Task-amp-Task-Instance"><a href="#Operator-amp-Task-amp-Task-Instance" class="headerlink" title="Operator &amp; Task &amp; Task Instance"></a>Operator &amp; Task &amp; Task Instance</h4><p>这三个概念是息息相关的，逐级地细化。Operator是基本操作的抽象，Task是Operator的参数化对象，Task Instance是在Task的一个实际操作。比如，执行Hive语句，是一个Operator，可以称为HiveOperator。如果再给出一条hql，那就变成了一个执行这条hql的具体任务，称之为Task。如果再细一点，具体到在某天某个时间点，执行了这个Task，那就是一个Task Instance。</p>
 <p>Airflow本身自带了大量常用的Operator，比如BashOperator，可以用于执行shell命令，HiveOperator，可以用于执行Hive命令。此外，如果有些特殊的需求，还可以自己定制Operator，以插件的形式使用。这在某些操作比较复杂的任务上非常有用，将一组操作合并成一个Operator，可以大大简化DAG的编写，在管理面板中查看WorkFlow时，也会显得比较整洁。</p>
-<h4 id="DAG-amp-DAG-Run"><a href="#DAG-amp-DAG-Run" class="headerlink" title="DAG &amp; DAG Run"></a>DAG &amp; DAG Run</h4><p>DAG是Directed acyclic graph(有向无环图)的缩写。通常来说，一个DAG对应一个ETL工作流。<br>在DAG下可以添加若干个Task，代表着一个ETL工作流中的原子操作，这些Task可以设置上下游的依赖关系。另外，可以为DAG设置一些默认参数，这些默认参数会自动传递给Task。例如，可以设定DAG的执行周期为每天凌晨1点，那么，在这个DAG之下的Task，如果没有设定执行周期，则全部都会被设定为凌晨1点。</p>
-<p>DAG Run是DAG的一个执行实例，类似于Task Instance 与Task的关系。DAG Run可以通过Airflow Schduler自动生成，也可以通过命令行或Restful API手动生成。<br>当生成一个DAG Run时，它的所有无上游的Task，会被同时实例化，也就是生成相应的Task Instance。然后会按照顺序，当一个Task的所有上游依赖都执行完成时，就会实例化下游的Task逐个把Task执行完。如果中间某个Task失败了，会根据规则决定是继续执行还是跳过。</p>
-<h4 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h4><p>Scheduler可以理解为DAG的调度中心，主要用途就是保证DAG能定时启动。每一个DAG都有一个start_date和schedule_interval参数。这两个参数分别代表第一个DAG Run对应的执行时间，和DAG Run生成的频率。Scheduler会自动检查这个DAG的DAG Run生成情况，如果某一天的DAG Run 缺失了，就会自动生成一个新的，并把state设定成Running。<br>Scheduler生成的DAG Run，在同一个时间点上是唯一的，比如说如果DAG Run被设定为1天1个，每天凌晨3点生成，那么在2018-03-01这一天，就只会有一个由Scheduler生成的DAG Run，如果这个DAG Run报错了，没执行完。想要让Scheduler自动重新执行这个DAG Run的流程，就需要把原本的DAG Run删除才行。</p>
-<h4 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h4><p>Worker是实际执行Task的最小单位。Airflow把Task Instance中储存的所有信息传递给Worker，然后Worker就会真正地去执行。<br>Airflow的Worker有三种，其中，在生产环境下，主要用Celery Worker。Celery Worker是分布式、可线性扩展的Worker。通过一个消息中间件（通常是RabbitMQ或者Redis）来实现消息的传递。</p>
-<h4 id="调度过程"><a href="#调度过程" class="headerlink" title="调度过程"></a>调度过程</h4><p>理解Airflow的调度流程，有助于编写DAG和日常管理。整个流程是线性，逐步推进的。<br>首先，由Scheduler生成DAG Run，或者外部触发（命令行或者Restful API） ，DAG Run的state设定成running。然后，由DAG Run生成Task Instance，并发送到Worker进程去执行实际操作（在这个过程中，生成DAG的机器和Worker所在的机器可以分离）。Worker执行完成后返回结果，决定是否执行下游的Task Instance。<br>如果上游的Task Instance执行失败了，下游的Task Instance就会被设定为upstream_failed状态，跳过实际执行（默认情况）。直到所有的Task Instance都有了结束状态（成功、失败、跳过），就会给出DAG的结束状态（所有Task Instance成功，则成功，否则失败）。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/20/Airflow基本概念/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -418,7 +417,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2018/05/20/Airflow离线任务调度/">
+    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2018/04/20/Airflow离线任务调度/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="向自由">
@@ -437,7 +436,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/20/Airflow离线任务调度/" itemprop="url">Aiflow 离线任务调度</a></h1>
+                <a class="post-title-link" href="/2018/04/20/Airflow离线任务调度/" itemprop="url">Aiflow 离线任务调度</a></h1>
         
 
         <div class="post-meta">
@@ -449,8 +448,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T22:08:42+08:00">
-                2018-05-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T22:08:42+08:00">
+                2018-04-20
               </time>
             
 
@@ -467,7 +466,7 @@
 
           
           
-             <span id="/2018/05/20/Airflow离线任务调度/" class="leancloud_visitors" data-flag-title="Aiflow 离线任务调度">
+             <span id="/2018/04/20/Airflow离线任务调度/" class="leancloud_visitors" data-flag-title="Aiflow 离线任务调度">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -500,13 +499,13 @@
       
         
           <p>在Airflow中，每个DAG，代表一个ETL Workflow。DAG以Python脚本的形式存在，只需要了解基本的编写思路和常用的Operator就可以编写出自己的Operator。<br>完成一个DAG脚本的编写后，需要进行调试以及线上测试；线上测试完成后，便可以正式部署并激活这个DAG，此后，便会按照指定的时间生产数据。</p>
-<h4 id="DAG定义"><a href="#DAG定义" class="headerlink" title="DAG定义"></a>DAG定义</h4><p>DAG脚本就是一个Python脚本，这个脚本需要生成一个Dag对象和若干个参数化了的Operator对象（即Task）。<br>DAG的编写十分简单，主要有四个步骤:<br><img src="/2018/05/20/Airflow离线任务调度/airflow_step.jpg" alt="logo"></p>
+<h4 id="DAG定义"><a href="#DAG定义" class="headerlink" title="DAG定义"></a>DAG定义</h4><p>DAG脚本就是一个Python脚本，这个脚本需要生成一个Dag对象和若干个参数化了的Operator对象（即Task）。<br>DAG的编写十分简单，主要有四个步骤:<br><img src="/2018/04/20/Airflow离线任务调度/airflow_step.jpg" alt="logo"></p>
 <p>1、import DAG类和若干operator类以及必要的Python模块。<br>2、设定默认参数，创建DAG对象。<br>3、提供必要的参数（比如task_id和dag)，创建Task（即Operator对象）。<br>4、设定Task的上下游依赖关系。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Code that goes along with the Airflow tutorial located at:</span></span><br><span class="line"><span class="string">https://github.com/airbnb/airflow/blob/master/airflow/example_dags/tutorial.py</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># ==================== import DAG和若干模块 ====================</span></span><br><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> DAG</span><br><span class="line"><span class="keyword">from</span> airflow.operators.bash_operator <span class="keyword">import</span> BashOperator</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta</span><br><span class="line"><span class="comment"># ==================== 创建一个DAG对象 ====================</span></span><br><span class="line"><span class="comment"># default_args设置的是DAG的通用参数，这些通用参数会直接传递给DAG下属的所有Task，这些参数也可以在创建Task时传入，</span></span><br><span class="line">default_args = &#123;</span><br><span class="line">    <span class="string">'owner'</span>: <span class="string">'airflow'</span>, <span class="comment"># 这个DAG的所有者，会在Web UI上显示，主要用于方便管理</span></span><br><span class="line">    <span class="string">'depends_on_past'</span>: <span class="keyword">False</span>,  <span class="comment"># 是否依赖于过去。如果为True，那么必须要昨天的DAG执行成功了，今天的DAG才能执行。</span></span><br><span class="line">    <span class="string">'start_date'</span>: datetime(<span class="number">2015</span>, <span class="number">6</span>, <span class="number">1</span>), <span class="comment"># DAG的开始时间，比如这里就是从2015年6月1日开始执行第一个DAG。这个参数会影响到部署上线时回填DAG的数量。一般建议写成上线时间的前一天（因为这里的start_date指的是execute_date，而Airflow执行的逻辑是，今天的同一时间执行昨天的任务，比如execute_date=2018-03-01，每天凌晨3点执行，则会在2018-03-02 03:00:00启动这个DAG。特别地，这个参数必须一个datetime对象，不可以用字符串。</span></span><br><span class="line">    <span class="string">'email'</span>: [<span class="string">'airflow@example.com'</span>],<span class="comment"># 出问题时，发送报警Email的地址，可以填多个，用逗号隔开。</span></span><br><span class="line">    <span class="string">'email_on_failure'</span>: <span class="keyword">False</span>, <span class="comment"># 任务失败且重试次数用完时是否发送Email，推荐填True。</span></span><br><span class="line">    <span class="string">'email_on_retry'</span>: <span class="keyword">False</span>, <span class="comment"># 任务重试时是否发送Email</span></span><br><span class="line">    <span class="string">'retries'</span>: <span class="number">1</span>, <span class="comment"># 任务失败后的重试次数</span></span><br><span class="line">    <span class="string">'retry_delay'</span>: timedelta(minutes=<span class="number">5</span>), <span class="comment"># 重试间隔，必须是timedelta对象。</span></span><br><span class="line">    <span class="comment"># 'queue': 'bash_queue', 队列，默认是default，决定实际执行任务会发送到哪个worker</span></span><br><span class="line">    <span class="comment"># 'pool': 'backfill',  pool是一个分类限制并发量的设计，目前来说可以忽略，默认所有的Task都在一个pool里。</span></span><br><span class="line">    <span class="comment"># 'priority_weight': 10, 优先级权重，在任务需要排队时而你需要优先执行某些任务时会有用</span></span><br><span class="line">    <span class="comment"># 'end_date': datetime(2016, 1, 1), # 结束时间，一般线上任务都会一直跑下去，所以没必要设置。</span></span><br><span class="line">&#125;</span><br><span class="line">dag = DAG(<span class="string">'tutorial'</span>, default_args=default_args,schedule_interval=<span class="string">"0 3 * * *"</span>) <span class="comment"># 第一个参数固定为dag的名字,schedule_interval为执行时间间隔，同crontab的语法，在这个例子中表示每天凌晨3点执行</span></span><br><span class="line"><span class="comment"># ==================== 创建若干Task ====================</span></span><br><span class="line"><span class="comment"># t1, t2 and t3 are examples of tasks created by instantiating operators</span></span><br><span class="line"><span class="comment"># 下面三个Task，都是BashOperator对象，这在Airflow乃至所有的调度系统中都是最常用的对象之一，其效果是执行传入的bash 命令。除了例子中的这些命令之外，和Spark结合，可以写spark 命令，和sqoop结合，可以写sqoop 命令，适用面非常广，而且编写简单，直接，只需要三个参数：task_id-任务id，bash_command-bash命令，dag-对应的dag对象</span></span><br><span class="line">t1 = BashOperator(</span><br><span class="line">    task_id=<span class="string">'print_date'</span>,</span><br><span class="line">    bash_command=<span class="string">'date'</span>,</span><br><span class="line">    dag=dag)</span><br><span class="line">t2 = BashOperator(</span><br><span class="line">    task_id=<span class="string">'sleep'</span>,</span><br><span class="line">    bash_command=<span class="string">'sleep 5'</span>,</span><br><span class="line">    retries=<span class="number">3</span>,</span><br><span class="line">    dag=dag)</span><br><span class="line"><span class="comment"># 下面的bash命令用到了macros（宏）这个特性，这里用'&#123;&#123; ds &#125;&#125;'来指代任务的执行日期，比如这个任务的某一天的执行日期是2018-01-01，那么'&#123;&#123; ds &#125;&#125;'就会被替换成'2018-01-01'，这在做一些和时间密切相关的变量时非常有用。这个特性背后的机制是Jinja2模版的render(渲染)功能，每个Operator都可以指定某些参数用于render，比如BashOperator就特别指定了bash_command，要有更深入全面的认识，则需要去查看Operator的源码。</span></span><br><span class="line">templated_command = <span class="string">"""</span></span><br><span class="line"><span class="string">    &#123;% for i in range(5) %&#125;</span></span><br><span class="line"><span class="string">        echo "&#123;&#123; ds &#125;&#125;"</span></span><br><span class="line"><span class="string">        echo "&#123;&#123; macros.ds_add(ds, 7)&#125;&#125;"</span></span><br><span class="line"><span class="string">        echo "&#123;&#123; params.my_param &#125;&#125;"</span></span><br><span class="line"><span class="string">    &#123;% endfor %&#125;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">t3 = BashOperator(</span><br><span class="line">    task_id=<span class="string">'templated'</span>,</span><br><span class="line">    bash_command=templated_command,</span><br><span class="line">    params=&#123;<span class="string">'my_param'</span>: <span class="string">'Parameter I passed in'</span>&#125;,</span><br><span class="line">    dag=dag)</span><br><span class="line"><span class="comment"># ==================== 设定Task依赖关系 ====================</span></span><br><span class="line"><span class="comment"># 设定依赖有两种方式，一种是使用对象的方法，set_upstream和set_downstream来设置上下游依赖，另一种是使用运算符，比如下面的 t3 &lt;&lt; t1，表示t3是t1的下游对象。推荐使用第二种，更简单直观，而且可以在一行里写出整个依赖链条，比如说t1 下游t2，t2下游t3，就可以写成t1 &gt;&gt; t2 &gt;&gt; t3。</span></span><br><span class="line">t2.set_upstream(t1)</span><br><span class="line">t3 &lt;&lt; t1</span><br></pre></td></tr></table></figure>
 <h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><p>在编写完成之后就进入调试阶段，这一阶段主要的目的就是DeBug，步骤如下：<br>1、语法检查：用Python命令执行该脚本，确保没有语法错误。<br>2、上传到服务器：将脚本上传至服务器，使用airflow list_dags | grep your_dag_name（你的dag的名字，比如上面的例子里，就是tutorial)来检查Airflow是否识别出了你的dag。一般来说，只要第一个Python运行没问题，就能识别出来。<br>3、DAG测试：在服务器上输入命令 airflow backfill your_dag_name -s ‘2018-03-06’ -e ‘2018-03-07’ -l。backfill命令本身是用于回填的，-s表示开始时间，-e表示结束时间(到该时间为止，比如在这条语句中，如果DAG的执行间隔为1天，则只会生成03-06的DAG Run，不会生成03-07的），使用该命令可以回填多个DAG Run，按当前语句设置则只会生成一个，适合用于测试整个DAG的运行状况，最后有个-l参数，表示些任务在本地机器上执行（在部署好的集群上做测试时，这样做可以仅仅更新用于测试服务器上的DAG文件，直到测试完成之后再更新worker服务器上的DAG文件）。<br>4、Task Debug:如果在3中的测试出了问题，系统会提示是哪个Task出了问题，这时候首先修改代码，然后重复1,2的操作，再执行airflow test your_dag_name bug_task_id 2018-03-06，单独测试这个Task的执行情况。依此法修复所有有问题的task。然后再执行命令airflow clear your_dag_id，清理干净所有的Task，最后重复3的操作，直到能成功运行完所有的task。整个调试阶段就算完成了。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/05/20/Airflow离线任务调度/#more" rel="contents">
+            <a class="btn" href="/2018/04/20/Airflow离线任务调度/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
