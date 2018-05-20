@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="数据仓库," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -94,20 +94,19 @@
 
 
 
-<meta name="description" content="数据仓库数据仓库可以理解成一个抽象的数据库，内部装载着经过清洗、验证的高质量数据。这些数据经过了重构，能让用户更快速、更便捷地查询到自己所需要的数据。 数据仓库关键部分:  要对数据进行验证和清洗，保证高质量 要对数据进行重构，使之更适合用于分析（可以理解为，SQL查询更为方便）  数据仓库的特点 面向主题: 面向主题特性是数据仓库和操作型数据库的根本区别。操作型数据库是为了支撑各种业务而建立，而">
-<meta name="keywords" content="数据仓库">
+<meta name="description" content="应用场景 任何工具都有自己的主要应用场景，结合主要应用场景来学习实践，会更为高效。Airflow作为一款调度系统，主要应用场景就是ETL调度。在一个ETL工作流中，通常会涉及有依赖的任务，必须按一定的顺序执行。另外，ETL还是按周期定时执行的，比如每月，每周，每天，甚至每小时执行一次。一款调度系统，必须要解决最核心的几个需求：  可定义任务依赖 可周期定时执行 可视化监控，出错重试，失败报警Air">
 <meta property="og:type" content="article">
-<meta property="og:title" content="什么是数据仓库">
-<meta property="og:url" content="http://liuzhuang.me/2016/11/19/什么是数据仓库/index.html">
+<meta property="og:title" content="Airflow基本概念">
+<meta property="og:url" content="http://liuzhuang.me/2018/05/20/Airflow基本概念/index.html">
 <meta property="og:site_name" content="向自由">
-<meta property="og:description" content="数据仓库数据仓库可以理解成一个抽象的数据库，内部装载着经过清洗、验证的高质量数据。这些数据经过了重构，能让用户更快速、更便捷地查询到自己所需要的数据。 数据仓库关键部分:  要对数据进行验证和清洗，保证高质量 要对数据进行重构，使之更适合用于分析（可以理解为，SQL查询更为方便）  数据仓库的特点 面向主题: 面向主题特性是数据仓库和操作型数据库的根本区别。操作型数据库是为了支撑各种业务而建立，而">
+<meta property="og:description" content="应用场景 任何工具都有自己的主要应用场景，结合主要应用场景来学习实践，会更为高效。Airflow作为一款调度系统，主要应用场景就是ETL调度。在一个ETL工作流中，通常会涉及有依赖的任务，必须按一定的顺序执行。另外，ETL还是按周期定时执行的，比如每月，每周，每天，甚至每小时执行一次。一款调度系统，必须要解决最核心的几个需求：  可定义任务依赖 可周期定时执行 可视化监控，出错重试，失败报警Air">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://liuzhuang.me/2016/11/19/什么是数据仓库/20171121.jpg">
-<meta property="og:updated_time" content="2017-12-25T14:50:47.000Z">
+<meta property="og:image" content="http://liuzhuang.me/2018/05/20/Airflow基本概念/airflow.jpg">
+<meta property="og:updated_time" content="2018-05-20T15:10:03.734Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="什么是数据仓库">
-<meta name="twitter:description" content="数据仓库数据仓库可以理解成一个抽象的数据库，内部装载着经过清洗、验证的高质量数据。这些数据经过了重构，能让用户更快速、更便捷地查询到自己所需要的数据。 数据仓库关键部分:  要对数据进行验证和清洗，保证高质量 要对数据进行重构，使之更适合用于分析（可以理解为，SQL查询更为方便）  数据仓库的特点 面向主题: 面向主题特性是数据仓库和操作型数据库的根本区别。操作型数据库是为了支撑各种业务而建立，而">
-<meta name="twitter:image" content="http://liuzhuang.me/2016/11/19/什么是数据仓库/20171121.jpg">
+<meta name="twitter:title" content="Airflow基本概念">
+<meta name="twitter:description" content="应用场景 任何工具都有自己的主要应用场景，结合主要应用场景来学习实践，会更为高效。Airflow作为一款调度系统，主要应用场景就是ETL调度。在一个ETL工作流中，通常会涉及有依赖的任务，必须按一定的顺序执行。另外，ETL还是按周期定时执行的，比如每月，每周，每天，甚至每小时执行一次。一款调度系统，必须要解决最核心的几个需求：  可定义任务依赖 可周期定时执行 可视化监控，出错重试，失败报警Air">
+<meta name="twitter:image" content="http://liuzhuang.me/2018/05/20/Airflow基本概念/airflow.jpg">
 
 
 
@@ -136,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://liuzhuang.me/2016/11/19/什么是数据仓库/"/>
+  <link rel="canonical" href="http://liuzhuang.me/2018/05/20/Airflow基本概念/"/>
 
 
 
 
 
-  <title>什么是数据仓库 | 向自由</title>
+  <title>Airflow基本概念 | 向自由</title>
   
 
 
@@ -275,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2016/11/19/什么是数据仓库/">
+    <link itemprop="mainEntityOfPage" href="http://liuzhuang.me/2018/05/20/Airflow基本概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="向自由">
@@ -292,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">什么是数据仓库</h1>
+          <h1 class="post-title" itemprop="name headline">Airflow基本概念</h1>
         
 
         <div class="post-meta">
@@ -304,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-19T23:23:26+08:00">
-                2016-11-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T23:06:53+08:00">
+                2018-05-20
               </time>
             
 
@@ -315,28 +314,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据仓库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据仓库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -344,7 +321,7 @@
 
           
           
-             <span id="/2016/11/19/什么是数据仓库/" class="leancloud_visitors" data-flag-title="什么是数据仓库">
+             <span id="/2018/05/20/Airflow基本概念/" class="leancloud_visitors" data-flag-title="Airflow基本概念">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -375,40 +352,19 @@
       
 
       
-        <h4 id="数据仓库"><a href="#数据仓库" class="headerlink" title="数据仓库"></a>数据仓库</h4><p>数据仓库可以理解成一个抽象的数据库，内部装载着经过清洗、验证的高质量数据。这些数据经过了重构，能让用户更快速、更便捷地查询到自己所需要的数据。</p>
-<p>数据仓库关键部分:</p>
-<ul>
-<li>要对数据进行验证和清洗，保证高质量</li>
-<li>要对数据进行重构，使之更适合用于分析（可以理解为，SQL查询更为方便）</li>
-</ul>
-<h4 id="数据仓库的特点"><a href="#数据仓库的特点" class="headerlink" title="数据仓库的特点"></a>数据仓库的特点</h4><ul>
-<li>面向主题: 面向主题特性是数据仓库和操作型数据库的根本区别。操作型数据库是为了支撑各种业务而建立，而分析型数据库则是为了对从各种繁杂业务中抽象出来的分析主题(如用户、成本、商品等)进行分析而建立；</li>
-<li>集成性: 数据仓库的集成性是指数据仓库会将不同源数据库中的数据汇总到一起；</li>
-<li>历史性: 较之操作型数据库，数据仓库的时间跨度通常比较长。前者通常保存几个月，后者可能几年甚至几十年；</li>
-<li>时变性: 指数据仓库包含来自其时间范围不同时间段的数据快照。有了这些数据快照以后，用户便可将其汇总，生成各历史阶段的数据分析报告.</li>
-</ul>
-<h4 id="数据仓库的组成部分"><a href="#数据仓库的组成部分" class="headerlink" title="数据仓库的组成部分"></a>数据仓库的组成部分</h4><p>数据仓库主要由4部分构成：输入数据源，ETL系统，数据仓库以及前端应用。</p>
-<p><img src="/2016/11/19/什么是数据仓库/20171121.jpg" alt="logo"></p>
-<ul>
-<li>数据源：来自不同业务系统的数据，我们通常无法对这些数据源进行操作，只能读取其中的数据。<br>业务系统包含各种源数据库，这些源数据库既为业务系统提供数据支撑，同时也作为数据仓库的数据源(注：除了业务系统，数据仓库也可从其他外部数据源获取数据)；</li>
-<li>ETL系统：这个系统将数据源中的数据抽取出来，经过验证、清洗、转化等步骤，生成高质量的数据，然后把它们加载到数据仓库中；</li>
-<li>数据仓库：储存着经过验证的、高质量的、易于使用的数据；</li>
-<li>前端应用：和操作型数据库一样，数据仓库通常提供具有直接访问数据仓库功能的前端应用，这些应用也被称为BI(商务智能)应用；即面向数据使用者的应用，比如各种报表以及可视化应用。</li>
-</ul>
-<a id="more"></a>
-<h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><p>数据建模是数据仓库成败的关键，甚至可以说，设计数据仓库，主要就是进行数据建模。<br>数据模型是一种抽象，描述了数据仓库承诺会给用户提供什么数据，以及这些数据是怎样串联起来的。它就相当于数据仓库的骨架。用户可以通过了解这个骨架，去探索对数据的深入应用。<br>数据建模有多种不同的方法，Kimball和Inmon各自提出了自己的看法。</p>
-<h5 id="Kimball：维度模型"><a href="#Kimball：维度模型" class="headerlink" title="Kimball：维度模型"></a>Kimball：维度模型</h5><p>Kimball的想法是，把数据分为维度和度量两个层面。<br>维度层面的数据主要用于分析对数据进行切片、切块等操作，度量层面的数据则是我们最关注、最核心的业务数据，一般都是具体的数字。<br>这一建模方法被称为维度建模法，数据库表被分为两种类型：维度表和事实表。维度表就储存维度层面的数据，事实表储存度量层面的数据，并用外键与维度表关联。<br>事实表来自业务活动，是建模和数据分析核心，而维度表主要提供了不同角度的分析，还可以根据需要进行下钻或上卷。</p>
-<h5 id="Inmon：数据分发模型"><a href="#Inmon：数据分发模型" class="headerlink" title="Inmon：数据分发模型"></a>Inmon：数据分发模型</h5><p>Inmon的想法是，首先建立一个符合第三范式的，最细粒度的数据库，其中保存着最原始的数据。一般来说这个数据库不直接面向用户。<br>然后在这个数据库的基础上做进一步的聚合，生成多个不同的小型数据库，以满足最终用户的不同需求。<br>Inmon的数据建模分三个层次，从高到低逐步推进扩展，分别是高层建模（实体关系）、中间层建模（数据项集或DIS）、底层建模（物理模型）</p>
-<ul>
-<li><p>概念模型（高层）<br>一个主题中含有的实体，以及他们之间的关系。比如订单，顾客，都可以作为一个实体，而一个顾客可能含有多个订单，就是1对多的关系。<br>主要关注业务和宏观层面。</p>
-</li>
-<li><p>逻辑模型（中间层）<br>对一个实体所拥有的数据做具体的描述，比如顾客这个实体，他会有账号相关信息如用户名、密码、余额，也会有地址信息，如国家、城市、街道等等。<br>主要关注业务和微观层面。<br>在这个层面上建模，实质就是建立模型对应的表了。应该要能描述出最终用户所能用到的所有数据。</p>
-</li>
-<li><p>物理模型（底层）<br>具体到数据库表的设计，需要有针对性的对查询做优化，比如可能会合并中间层模型中的一些表以提高查询性能。物理模型中的表应该由逻辑模型生成，再根据优化需要做进一步调整，可能并不完全一致，但应该要能查询到逻辑模型所承诺的数据。<br>主要关注技术和微观层面。</p>
-</li>
-</ul>
-<h4 id="ETL设计"><a href="#ETL设计" class="headerlink" title="ETL设计"></a>ETL设计</h4><p>ETL的工作是把不同数据源的数据进行整合，然后加载到数据仓库中。实质上是在数据模型的基础上填充具体的事实数据，相当于数据仓库的血肉。</p>
-<p>ETL可以通过多种多样的方式实现，既可以写脚本，也可以用工具，根据实际情景和需求来决定。但无论如何，都需要对数据处理设定好具体的规则，这是与具体实现无关的东西。比如说，需要明确哪些数据是可信的，对于不同来源的同一数据，如果相互有矛盾，该如何取舍，对于缺失的数据，又该如何进行处理。这些都属于ETL的设计范围。<br>总的来说，ETL的实现是一个技术问题，而设计则是需要和业务紧密联系的。</p>
+        <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p><img src="/2018/05/20/Airflow基本概念/airflow.jpg" alt="logo"></p>
+<p>任何工具都有自己的主要应用场景，结合主要应用场景来学习实践，会更为高效。<br>Airflow作为一款调度系统，主要应用场景就是ETL调度。在一个ETL工作流中，通常会涉及有依赖的任务，必须按一定的顺序执行。<br>另外，ETL还是按周期定时执行的，比如每月，每周，每天，甚至每小时执行一次。一款调度系统，必须要解决最核心的几个需求：</p>
+<ol>
+<li>可定义任务依赖</li>
+<li>可周期定时执行</li>
+<li>可视化监控，出错重试，失败报警<br>Airflow当然可以很好地满足这几个需求，下面就从这些需求出发，学习如何用Airflow去实现。</li>
+</ol>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>在ETL调度这个场景下，Airflow把几个关键实体抽象了出来，了解这些抽象实体，有助于理解Airflow的编程模型，从而更好地编写Airflow调度任务。<br>总体来说，最重要的概念有两个，一个是DAG，一个是Scheduler。DAG解决了定义任务依赖的需求，Scheduler解决了周期定时执行的需求。</p>
+<h4 id="Operator-amp-Task-amp-Task-Instance"><a href="#Operator-amp-Task-amp-Task-Instance" class="headerlink" title="Operator &amp; Task &amp; Task Instance"></a>Operator &amp; Task &amp; Task Instance</h4><p>这三个概念是息息相关的，逐级地细化。Operator是基本操作的抽象，Task是Operator的参数化对象，Task Instance是在Task的一个实际操作。<br>比如，执行Hive语句，是一个Operator，可以称为HiveOperator。如果再给出一条hql，那就变成了一个执行这条hql的具体任务，称之为Task。如果再细一点，具体到在某天某个时间点，执行了这个Task，那就是一个Task Instance。<br>Airflow本身自带了大量常用的Operator，比如BashOperator，可以用于执行shell命令，HiveOperator，可以用于执行Hive命令。<br>此外，如果有些特殊的需求，还可以自己定制Operator，以插件的形式使用。这在某些操作比较复杂的任务上非常有用，将一组操作合并成一个Operator，可以大大简化DAG的编写，在管理面板中查看WorkFlow时，也会显得比较整洁。</p>
+<h4 id="DAG-amp-DAG-Run"><a href="#DAG-amp-DAG-Run" class="headerlink" title="DAG &amp; DAG Run"></a>DAG &amp; DAG Run</h4><p>DAG是Directed acyclic graph(有向无环图)的缩写。通常来说，一个DAG对应一个ETL工作流。在DAG下可以添加若干个Task，代表着一个ETL工作流中的原子操作，这些Task可以设置上下游的依赖关系。另外，可以为DAG设置一些默认参数，这些默认参数会自动传递给Task。例如，可以设定DAG的执行周期为每天凌晨1点，那么，在这个DAG之下的Task，如果没有设定执行周期，则全部都会被设定为凌晨1点。<br>DAG Run是DAG的一个执行实例，类似于Task Instance 与Task的关系。DAG Run可以通过Airflow Schduler自动生成，也可以通过命令行或Restful API手动生成。<br>当生成一个DAG Run时，它的所有无上游的Task，会被同时实例化，也就是生成相应的Task Instance。然后会按照顺序，当一个Task的所有上游依赖都执行完成时，就会实例化下游的Task逐个把Task执行完。如果中间某个Task失败了，会根据规则决定是继续执行还是跳过。</p>
+<h4 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h4><p>Scheduler可以理解为DAG的调度中心，主要用途就是保证DAG能定时启动。每一个DAG都有一个start_date和schedule_interval参数。这两个参数分别代表第一个DAG Run对应的执行时间，和DAG Run生成的频率。Scheduler会自动检查这个DAG的DAG Run生成情况，如果某一天的DAG Run 缺失了，就会自动生成一个新的，并把state设定成Running。<br>Scheduler生成的DAG Run，在同一个时间点上是唯一的，比如说如果DAG Run被设定为1天1个，每天凌晨3点生成，那么在2018-03-01这一天，就只会有一个由Scheduler生成的DAG Run，如果这个DAG Run报错了，没执行完。想要让Scheduler自动重新执行这个DAG Run的流程，就需要把原本的DAG Run删除才行。</p>
+<h4 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h4><p>Worker是实际执行Task的最小单位。Airflow把Task Instance中储存的所有信息传递给Worker，然后Worker就会真正地去执行。Airflow的Worker有三种，其中，在生产环境下，主要用Celery Worker。Celery Worker是分布式、可线性扩展的Worker。通过一个消息中间件（通常是RabbitMQ或者Redis）来实现消息的传递。</p>
+<h4 id="调度过程"><a href="#调度过程" class="headerlink" title="调度过程"></a>调度过程</h4><p>理解Airflow的调度流程，有助于编写DAG和日常管理。<br>整个流程是线性，逐步推进的。<br>首先，由Scheduler生成DAG Run，或者外部触发（命令行或者Restful API） ，DAG Run的state设定成running。然后，由DAG Run生成Task Instance，并发送到Worker进程去执行实际操作（在这个过程中，生成DAG的机器和Worker所在的机器可以分离）。Worker执行完成后返回结果，决定是否执行下游的Task Instance。如果上游的Task Instance执行失败了，下游的Task Instance就会被设定为upstream_failed状态，跳过实际执行（默认情况）。直到所有的Task Instance都有了结束状态（成功、失败、跳过），就会给出DAG的结束状态（所有Task Instance成功，则成功，否则失败）</p>
 
       
     </div>
@@ -424,12 +380,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/数据仓库/" rel="tag"># 数据仓库</a>
-          
-        </div>
-      
 
       
       
@@ -439,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/18/为什么要使用数据仓库/" rel="next" title="为什么要使用数据仓库">
-                <i class="fa fa-chevron-left"></i> 为什么要使用数据仓库
+              <a href="/2018/05/20/Airflow离线任务调度/" rel="next" title="Aiflow 离线任务调度">
+                <i class="fa fa-chevron-left"></i> Aiflow 离线任务调度
               </a>
             
           </div>
@@ -448,10 +398,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/20/一行命令实现csv文件可视化/" rel="prev" title="一行命令实现csv文件可视化">
-                一行命令实现csv文件可视化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x4ED3;&#x5E93;" class="headerlink" title="&#x6570;&#x636E;&#x4ED3;&#x5E93;"></a>&#x6570;&#x636E;&#x4ED3;&#x5E93;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库的特点"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7279;&#x70B9;" class="headerlink" title="&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7279;&#x70B9;"></a>&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7279;&#x70B9;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库的组成部分"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;" class="headerlink" title="&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;"></a>&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据模型"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x6A21;&#x578B;" class="headerlink" title="&#x6570;&#x636E;&#x6A21;&#x578B;"></a>&#x6570;&#x636E;&#x6A21;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Kimball：维度模型"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#Kimball&#xFF1A;&#x7EF4;&#x5EA6;&#x6A21;&#x578B;" class="headerlink" title="Kimball&#xFF1A;&#x7EF4;&#x5EA6;&#x6A21;&#x578B;"></a>Kimball&#xFF1A;&#x7EF4;&#x5EA6;&#x6A21;&#x578B;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Inmon：数据分发模型"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#Inmon&#xFF1A;&#x6570;&#x636E;&#x5206;&#x53D1;&#x6A21;&#x578B;" class="headerlink" title="Inmon&#xFF1A;&#x6570;&#x636E;&#x5206;&#x53D1;&#x6A21;&#x578B;"></a>Inmon&#xFF1A;&#x6570;&#x636E;&#x5206;&#x53D1;&#x6A21;&#x578B;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ETL设计"><span class="nav-number">5.</span> <span class="nav-text"><a href="#ETL&#x8BBE;&#x8BA1;" class="headerlink" title="ETL&#x8BBE;&#x8BA1;"></a>ETL&#x8BBE;&#x8BA1;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5E94;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x5E94;&#x7528;&#x573A;&#x666F;"></a>&#x5E94;&#x7528;&#x573A;&#x666F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x6982;&#x5FF5;" class="headerlink" title="&#x57FA;&#x672C;&#x6982;&#x5FF5;"></a>&#x57FA;&#x672C;&#x6982;&#x5FF5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Operator-amp-Task-amp-Task-Instance"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Operator-amp-Task-amp-Task-Instance" class="headerlink" title="Operator &amp; Task &amp; Task Instance"></a>Operator &amp; Task &amp; Task Instance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DAG-amp-DAG-Run"><span class="nav-number">4.</span> <span class="nav-text"><a href="#DAG-amp-DAG-Run" class="headerlink" title="DAG &amp; DAG Run"></a>DAG &amp; DAG Run</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scheduler"><span class="nav-number">5.</span> <span class="nav-text"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Worker"><span class="nav-number">6.</span> <span class="nav-text"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度过程"><span class="nav-number">7.</span> <span class="nav-text"><a href="#&#x8C03;&#x5EA6;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x8C03;&#x5EA6;&#x8FC7;&#x7A0B;"></a>&#x8C03;&#x5EA6;&#x8FC7;&#x7A0B;</span></a></li></ol></div>
             
 
           </div>
